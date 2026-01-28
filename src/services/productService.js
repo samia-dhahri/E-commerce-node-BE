@@ -20,3 +20,8 @@ export const updateProduct = async(productData, productId) => {
     );
     return rows[0];
 }
+
+export const deleteProduct = async(productId) => {
+    const{rows} = await query(`DELETE FROM product WHERE id = $1 RETURNING id`, [productId]);
+    return rows.length > 0;
+}
