@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 node_modules/
 .env
 .idea/
+=======
+node-modules
+.env
+.idea/
+>>>>>>> origin/main
