@@ -5,7 +5,7 @@ export const getProducts = async (req, res) => {
         const products = await productService.getProducts();
         res.status(200).json(products);
     }catch (e) {
-        console.error('Error fetching product:', e.error);
+        console.error('Error fetching product:', e);
         res.status(500).json({ message: 'Internal server Error'});
     }
 }
