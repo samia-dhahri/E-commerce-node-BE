@@ -49,7 +49,39 @@ describe("productController", () => {
             expect(res.json).toHaveBeenCalledWith({message: "Internal server error"});
         })
     });
-    describe("createProducts", () => {});
-    describe("updateProducts", () => {});
-    describe("deleteProducts", () => {});
+    describe("createProducts", () => {
+        it("Should return 201 with created product", async () => {
+
+        });
+
+        it("Should return 500 in fail case", async () => {
+
+        });
+    });
+    describe("updateProducts", () => {
+        it("Should return 200 with updated product", async () => {
+
+        });
+
+        it("Should return 404: case not found product", async () => {
+
+        });
+
+        it("Should return 500: case it fails", async () => {
+
+        });
+    });
+    describe("deleteProducts", () => {
+        it("Should return 204 with deleted product successfully", async () => {
+
+        });
+
+        it("Should return 404: case not found product", async () => {
+
+        });
+
+        it("Should return 500 if it fails", async () => {
+
+        });
+    });
 })
