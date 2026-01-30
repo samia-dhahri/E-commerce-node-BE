@@ -1,14 +1,14 @@
 import { jest } from "@jest/globals";
 
-jest.unstable_mockModule("../../../src/services/productService.js", () => ({
+jest.unstable_mockModule("../services/productService.js", () => ({
     getProducts: jest.fn(),
     createProducts: jest.fn(),
     updateProducts: jest.fn(),
     deleteProducts: jest.fn(),
 }));
 
-const productServcie = await import("../../../src/services/productService.js");
-const controller = await import("../../../scr/controllers/productController.js");
+const productServcie = await import("../services/productService.js");
+const controller = await import("../controllers/productController.js");
 
 function  createRes(){
     const res= {};
@@ -37,7 +37,17 @@ describe("productController", () => {
             expect(res.status).toHaveBeenCalledWith(200);
             expect(res.json).toHaveBeenCalledWith(products);
         });
+        it("should return 500 if service throws", async () => {
+            const req = {};
+            const res = createRes();
 
+            productServcie.getProducts.mockRejectedValue(new Error("Error test getProducts !"));
+            await controller.getProducts(req, res);
+
+            expect(productServcie.getProducts).toHaveBeenCalledTimes(1);
+            expect(res.status).toHaveBeenCalledWith(500);
+            expect(res.json).toHaveBeenCalledWith({message: "Internal server error"});
+        })
     });
     describe("createProducts", () => {});
     describe("updateProducts", () => {});

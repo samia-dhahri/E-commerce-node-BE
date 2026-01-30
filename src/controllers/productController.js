@@ -6,7 +6,7 @@ export const getProducts = async (req, res) => {
         res.status(200).json(products);
     }catch (e) {
         console.error('Error fetching product:', e);
-        res.status(500).json({ message: 'Internal server Error'});
+        res.status(500).json({ message: 'Internal server error'});
     }
 }
 
